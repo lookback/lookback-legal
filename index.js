@@ -14,4 +14,4 @@ function findConsentsFromFile(pattern) {
     }, {});
 }
 
-module.exports = findConsentsFromFile('consents/*.md');
+module.exports = findConsentsFromFile(`${__dirname}/consents/*.md`);
