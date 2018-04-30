@@ -1,17 +1,30 @@
 const fs = require('fs');
 const path = require('path');
 const glob = require('glob');
+const crypto = require('crypto');
 
 function findConsentsFromFile(pattern) {
   return glob.sync(pattern)
-    .map(filename => ({
-      name: path.basename(filename).split('.')[0],
-      text: fs.readFileSync(filename, { encoding: 'utf8' })
-    }))
+    .map(filename => {
+      const text = fs.readFileSync(filename, { encoding: 'utf8' });
+
+      return {
+        name:    path.basename(filename).split('.')[0],
+        text,
+        version: crypto.createHash('sha256').update(text).digest('hex')
+      };
+    })
+    // Convert to dict
     .reduce((acc, consent) => {
-      acc[consent.name] = consent.text;
+      acc[consent.name] = {
+        name:    consent.name,
+        text:    consent.text,
+        version: consent.version
+      };
       return acc;
     }, {});
 }
 
-module.exports = findConsentsFromFile(`${__dirname}/consents/*.md`);
+exports.Consents = findConsentsFromFile(`${__dirname}/consents/*.md`);
+
+

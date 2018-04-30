@@ -4,7 +4,8 @@
   "description": "User consents for the Lookback platform.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "pretest": "eslint .",
+    "test": "node tests/index.test"
   },
   "repository": {
     "type": "git",
