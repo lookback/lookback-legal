@@ -56,8 +56,8 @@ The module expose the following APIs:
 
 **Default export**
 
-```
-function init(pathToConsents?: string): object
+```js
+init(consentPath?: string): object
 ```
 
 Call this function with no arguments to make it look for consents in a default directory. Returns an object with API functions:
