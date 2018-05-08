@@ -2,14 +2,14 @@ const { test } = require('./test-runner');
 const crypto = require('crypto');
 
 // Under test
-const { _consents } = require('../')();
+const { Consents } = require('../')();
 
 const createHash = (text) =>
   crypto.createHash('sha256').update(text).digest('hex');
 
 test('All consents have valid keys', t => {
-  Object.keys(_consents).forEach(consentName => {
-    _consents[consentName].forEach(consent => {
+  Object.keys(Consents).forEach(consentName => {
+    Consents[consentName].forEach(consent => {
       t.ok(typeof consent.name === 'string', 'The name is a string');
       t.equal(consent.name, consentName);
       t.ok(typeof consent.text === 'string', 'The text is a string');

@@ -43,19 +43,19 @@ function findConsentsFromFile(pattern) {
 }
 
 module.exports = function init(consentPath = `${__dirname}/consents`) {
-  // _consents is a dict with values of sorted object arrays, on descending createdAt
-  const _consents = findConsentsFromFile(path.join(consentPath, '**/*.md'));
+  // consents is a dict with values of sorted object arrays, on descending createdAt
+  const consents = findConsentsFromFile(path.join(consentPath, '**/*.md'));
 
   const findConsent = (consentName, version) => {
-    if (!_consents[consentName]) {
+    if (!consents[consentName]) {
       return null;
     }
 
     if (!version) {
-      return _consents[consentName][0];
+      return consents[consentName][0];
     }
 
-    return _consents[consentName].filter(consent => consent.version === version)[0] || null;
+    return consents[consentName].filter(consent => consent.version === version)[0] || null;
   };
 
   const userHasConsented = (user, consentName, version) => {
@@ -75,11 +75,7 @@ module.exports = function init(consentPath = `${__dirname}/consents`) {
   };
 
   return {
-    // For tests
-    _consents,
-
-    // Public
-    CONSENT_KEYS: Object.keys(_consents),
+    Consents: consents,
     findConsent,
     userHasConsented,
   };

@@ -3,18 +3,18 @@ const { test } = require('./test-runner');
 require('./included-consents.test');
 
 // Under test
-const { userHasConsented, findConsent, _consents, CONSENT_KEYS } = require('../')(`${__dirname}/fixtures`);
+const { userHasConsented, findConsent, Consents } = require('../')(`${__dirname}/fixtures`);
 
 // ------ Test the data structure
 
 test('All consents are grouped on consent name and sorted in descending order by date', t => {
   // Check that the two directories in fixtures exist as top level "groups":
-  t.ok(_consents.testconsent, 'testconsent exists');
-  t.ok(_consents.someotherconsent, 'someotherconsent exists');
+  t.ok(Consents.testconsent, 'testconsent exists');
+  t.ok(Consents.someotherconsent, 'someotherconsent exists');
 
   // Simple sort check to see that the first element's
   // createdAt is before the next one
-  t.ok(_consents.testconsent[0].createdAt.getTime() > _consents.testconsent[1].createdAt.getTime()
+  t.ok(Consents.testconsent[0].createdAt.getTime() > Consents.testconsent[1].createdAt.getTime()
     , 'sorted latest to oldest');
 });
 
@@ -71,7 +71,7 @@ test('userHasConsented returns true if user has consented to specific version', 
 // ------ findConsent
 
 test('findConsent without specifying returns the latest consent', t => {
-  const latest = _consents.testconsent[0];
+  const latest = Consents.testconsent[0];
 
   t.ok(findConsent('testconsent'), 'returns latest');
   t.equal(findConsent('testconsent').version, latest.version, 'the versions match');
@@ -95,13 +95,4 @@ test('findConsent returns null for non existing version', t => {
   const consent = findConsent('testconsent', 'foo');
 
   t.equal(consent, null, 'did not find consent version');
-});
-
-// ------ CONSENT_KEYS
-
-test('CONSENT_KEYS', t => {
-  t.deepEqual(CONSENT_KEYS, [
-    'someotherconsent',
-    'testconsent',
-  ]);
 });
