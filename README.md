@@ -10,7 +10,7 @@ A repository for terms, consents, and various legal things we show for users.
 - Each consent file must include [YAML Front Matter](https://jekyllrb.com/docs/frontmatter/). Front Matter is a way to embed metadata fields inside a text file. So each consent file should look like:
     ```markdown
     ---
-    date: 2018-01-01 22:00  # Required
+    date: 2018-05-08T14:06:00  # Required
     ---
     Your text here.
     ```
@@ -19,10 +19,10 @@ A repository for terms, consents, and various legal things we show for users.
 
 1. Branch off into a new new git branch.
 2. Create a new directory in the `consents` directory. Give it a unique, `camelCase` name. This name will end up on the user object in the database, so make it easy to understand.
-3. Add a `.md` file in the newly created directory, with a front matter and body text. You *must* attach today's date as precise as possible:
+3. Add a `.md` file in the newly created directory, with a front matter and body text. You *must* attach today's date formatted as an ISO string:
     ```markdown
     ---
-    date: 2018-01-01 22:00:00
+    date: 2018-05-08T14:06:00
     ---
     Your text here.
     ```
