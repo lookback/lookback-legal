@@ -3,7 +3,7 @@ const { test } = require('./test-runner');
 require('./included-consents.test');
 
 // Under test
-const { userHasConsented, findConsent, _consents } = require('../')(`${__dirname}/fixtures`);
+const { userHasConsented, findConsent, _consents, CONSENT_KEYS } = require('../')(`${__dirname}/fixtures`);
 
 // ------ Test the data structure
 
@@ -95,4 +95,13 @@ test('findConsent returns null for non existing version', t => {
   const consent = findConsent('testconsent', 'foo');
 
   t.equal(consent, null, 'did not find consent version');
+});
+
+// ------ CONSENT_KEYS
+
+test('CONSENT_KEYS', t => {
+  t.deepEqual(CONSENT_KEYS, [
+    'someotherconsent',
+    'testconsent',
+  ]);
 });

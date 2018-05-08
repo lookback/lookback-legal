@@ -74,5 +74,13 @@ module.exports = function init(consentPath = `${__dirname}/consents`) {
     return user.consents.some(userConsent => userConsent.version === consent.version);
   };
 
-  return { _consents, findConsent, userHasConsented };
+  return {
+    // For tests
+    _consents,
+
+    // Public
+    CONSENT_KEYS: Object.keys(_consents),
+    findConsent,
+    userHasConsented,
+  };
 };
