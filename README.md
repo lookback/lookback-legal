@@ -81,7 +81,7 @@ This is a sample user document in a Mongo collection:
     // ...
     "consents": [
         {
-            "consentName": "someConsent",
+            "name": "someConsent",
             "version": "hash...",
             "consentedAt": new Date(),
             "where": "signupForm",

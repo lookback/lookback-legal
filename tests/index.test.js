@@ -34,8 +34,8 @@ suite('Index', () => {
     const user = {
       consents: [
         {
-          consentName: 'testconsent',
-          version:     '9bcbcc8ddd742d0386cda25501786914e5a57a82b7fbfa5e5ab1b488807ec3ca'
+          name:    'testconsent',
+          version: '9bcbcc8ddd742d0386cda25501786914e5a57a82b7fbfa5e5ab1b488807ec3ca'
         }
       ]
     };
@@ -48,8 +48,8 @@ suite('Index', () => {
     const user = {
       consents: [
         {
-          consentName: 'testconsent',
-          version:     '008d3f71f1a0367205d95759d7ef4fbcf67420e7219026470d278dd73003a243'
+          name:    'testconsent',
+          version: '008d3f71f1a0367205d95759d7ef4fbcf67420e7219026470d278dd73003a243'
         }
       ]
     };
@@ -61,8 +61,8 @@ suite('Index', () => {
     const user = {
       consents: [
         {
-          consentName: 'randomconsent',
-          version:     'aadd3f71f1a0367205d95759d7ef4fbcf67420e7219026470d278dd73003a241'
+          name:    'randomconsent',
+          version: 'aadd3f71f1a0367205d95759d7ef4fbcf67420e7219026470d278dd73003a241'
         }
       ]
     };
@@ -76,7 +76,7 @@ suite('Index', () => {
     const user = {
       consents: [
         {
-          consentName: 'testconsent',
+          name: 'testconsent',
           version
         }
       ]

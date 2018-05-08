@@ -71,7 +71,9 @@ module.exports = function init(consentPath = `${__dirname}/consents`) {
     }
 
     // Loop through and find if the user has given consent
-    return user.consents.some(userConsent => userConsent.version === consent.version);
+    return user.consents.some(userConsent =>
+      userConsent.name === consent.name && userConsent.version === consent.version
+    );
   };
 
   return {
