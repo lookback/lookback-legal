@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/lookback/lookback-legal#readme",
   "devDependencies": {
+    "colors": "^1.2.4",
     "eslint": "^4.4.1",
     "eslint-config-lookback": "github:lookback/eslint-config-lookback"
   },
